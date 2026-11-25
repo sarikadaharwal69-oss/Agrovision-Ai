@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agriculture - किसान फसल डॉक्टर</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #101b25;
+    color: white;
+}
+
+/* HEADER */
+header {
+    background: rgba(12, 27, 39, 0.97);
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #31505b;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background: linear-gradient(135deg,#00d4a0,#087c80);
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+.logo h2 {
+    font-size: 23px;
+}
+
+.logo span {
+    color: #19d5a2;
+}
+
+.logo p {
+    color: #b8c9cc;
+    font-size: 11px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #d5e1e3;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: #16d5a2;
+}
+
+.profile {
+    background: #243c4b;
+    padding: 10px 16px;
+    border-radius: 25px;
+}
+
+/* HERO */
+.hero {
+    margin: 30px auto;
+    width: 92%;
+    min-height: 330px;
+    padding: 40px;
+    border-radius: 25px;
+    background:
+    linear-gradient(90deg,rgba(5,35,43,.96),rgba(8,62,66,.78),rgba(48,44,44,.55)),
+    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+    border: 1px solid #427a78;
+    box-shadow: 0 10px 40px #0005;
+}
+
+.hero-content {
+    max-width: 680px;
+}
+
+.tag {
+    display: inline-block;
+    background: #b49b44;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(28px,4vw,43px);
+    line-height: 1.3;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    color: #d0e4e0;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+button {
+    border: none;
+    padding: 13px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
+}
+
+.primary {
+    background: linear-gradient(135deg,#00d6a2,#078b83);
+    color: white;
+}
+
+.secondary {
+    background: #ffffff25;
+    color: white;
+    border: 1px solid #ffffff50;
+}
+
+/* STATS */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+    min-width: 220px;
+}
+
+.stat {
+    background: #ffffff20;
+    border: 1px solid #ffffff40;
+    padding: 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.stat h2 {
+    color: #26e2ad;
+    font-size: 28px;
+    margin-top: 8px;
+}
+
+/* FARMER CARD */
+.farmer {
+    width: 92%;
+    margin: 25px auto;
+    background: linear-gradient(110deg,#176d7b,#244b77);
+    border-radius: 20px;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.farmer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    background: #31cdb4;
+    color: #063c3c;
+    font-size: 25px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.farmer p {
+    font-size: 13px;
+    color: #d5e8ee;
+    margin-top: 7px;
+}
+
+/* SECTION */
+.section {
+    width: 92%;
+    margin: 35px auto;
+}
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 25px;
+}
+
+.section-title p {
+    color: #9eb5bd;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg,#1d3443,#142631);
+    border: 1px solid #34505b;
+    padding: 25px;
+    border-radius: 18px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #12cba0;
+    box-shadow: 0 10px 25px #00b99520;
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 17px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #a9bdc3;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.card button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* AI SCANNER */
+.scanner {
+    background: linear-gradient(120deg,#164c4b,#183447);
+    border: 1px solid #268e7d;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.upload-area {
+    border: 2px dashed #5bbda9;
+    padding: 35px 15px;
+    margin-top: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.upload-area input {
+    display: none;
+}
+
+#preview {
+    max-width: 220px;
+    max-height: 180px;
+    margin: 15px auto;
+    border-radius: 12px;
+    display: none;
+}
+
+#result {
+    margin-top: 20px;
+    color: #45e9b9;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+    background: #09151e;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    color: #9eb5bd;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px) {
+    .grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    nav {
+        justify-content: center;
+    }
+}
+
+@media(max-width:600px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        width: 100%;
+    }
+
+    .farmer {
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">🌱</div>
+        <div>
+            <h2>Agri<span>Cure</span></h2>
+            <p>किसान फसल डॉक्टर</p>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#home">होम</a>
+        <a href="#solution">1-क्लिक समाधान</a>
+        <a href="#scanner">AI रोग स्कैन</a>
+        <a href="#tools">खेती टूल्स</a>
+        <a href="#weather">मौसम</a>
+    </nav>
+
+    <div class="profile">👤 sarika</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+        <span class="tag">✨ किसान 1-क्लिक समाधान</span>
+
+        <h1>
+            पत्ती देखकर बीमारी चुनें
+            और पाएं आसान फसल समाधान
+        </h1>
+
+        <p>
+            अपनी फसल की पत्ती का फोटो अपलोड करें।
+            संभावित बीमारी पहचानने और सुरक्षित कृषि
+            सलाह पाने में मदद लें।
+        </p>
+
+        <div class="buttons">
+            <button class="primary"
+            onclick="goToScanner()">
+                📷 AI फोटो स्कैन
+            </button>
+
+            <button class="secondary"
+            onclick="goToTools()">
+                🌾 खेती टूल्स
+            </button>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <p>🌿 समाधान श्रेणियां</p>
+            <h2>12+</h2>
+        </div>
+
+        <div class="stat">
+            <p>🛠️ खेती टूल्स</p>
+            <h2>9+</h2>
+        </div>
+    </div>
+
+</section>
+
+<!-- FARMER -->
+<section class="farmer">
+
+    <div class="farmer-info">
+        <div class="avatar">👨‍🌾</div>
+
+        <div>
+            <h3>स्वागत है, sarika</h3>
+            <p>📍 jabalpur, balaghat</p>
+            <p>🌱 किसान डैशबोर्ड</p>
+        </div>
+    </div>
+
+    <button class="primary"
+    onclick="alert('प्रोफाइल सेक्शन जल्द उपलब्ध होगा!')">
+        ✏️ प्रोफाइल अपडेट
+    </button>
+
+</section>
+
+<!-- MAIN TOOLS -->
+<section class="section" id="solution">
+
+    <div class="section-title">
+        <h2>🌾 किसान के लिए स्मार्ट समाधान</h2>
+        <p>आपकी खेती को आसान और बेहतर बनाने के लिए</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-icon">📷</div>
+            <h3>AI फोटो स्कैन</h3>
+            <p>फसल की पत्ती का फोटो अपलोड करके संभावित रोग की पहचान में मदद लें।</p>
+            <button class="primary" onclick="goToScanner()">स्कैन करें →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🎬</div>
+            <h3>वीडियो एवं एनिमेशन</h3>
+            <p>खेती और फसल सुरक्षा से जुड़े जानकारीपूर्ण वीडियो देखें।</p>
+            <button class="secondary" onclick="showMessage('वीडियो लाइब्रेरी')">देखें →</button>
+        </div>
+
+        <div class="card" id="weather">
+            <div class="card-icon">🌤️</div>
+            <h3>मौसम जानकारी</h3>
+            <p>मौसम, बारिश और तापमान से जुड़ी जानकारी प्राप्त करें।</p>
+            <button class="secondary" onclick="showMessage('मौसम जानकारी')">जानें →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🌱</div>
+            <h3>खेत रिकॉर्ड</h3>
+            <p>अपनी फसल, खेत और खेती से जुड़ी जानकारी व्यवस्थित रखें।</p>
+            <button class="secondary" onclick="showMessage('खेत रिकॉर्ड')">खोलें →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🧮</div>
+            <h3>खेती कैलकुलेटर</h3>
+            <p>खेती के क्षेत्रफल और अन्य सामान्य गणनाओं में सहायता लें।</p>
+            <button class="secondary" onclick="showMessage('खेती कैलकुलेटर')">खोलें →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">👨‍⚕️</div>
+            <h3>कृषि डॉक्टर AI</h3>
+            <p>खेती से जुड़े सवाल पूछें और सामान्य कृषि जानकारी प्राप्त करें।</p>
+            <button class="primary" onclick="showMessage('कृषि डॉक्टर AI')">बात करें →</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- AI SCANNER -->
+<section class="section" id="scanner">
+
+    <div class="scanner">
+        <h2>🔬 AI फसल रोग स्कैनर</h2>
+
+        <p style="margin-top:12px;color:#c5e5dd">
+            अपनी फसल की पत्ती की साफ फोटो चुनें।
+        </p>
+
+        <label class="upload-area" for="imageInput">
+            <div style="font-size:40px">📸</div>
+            <h3>फोटो अपलोड करें</h3>
+            <p>यहां क्लिक करके फोटो चुनें</p>
+
+            <input type="file"
+            id="imageInput"
+            accept="image/*"
+            onchange="previewImage(event)">
+        </label>
+
+        <img id="preview" alt="फसल की फोटो">
+
+        <br>
+
+        <button class="primary"
+        onclick="scanCrop()">
+            🔍 फोटो जांचें
+        </button>
+
+        <div id="result"></div>
+
+        <p style="font-size:12px;color:#b9d0d1;margin-top:18px">
+            ध्यान दें: फोटो प्रीव्यू इस डेमो में उपलब्ध है।
+            वास्तविक AI रोग पहचान के लिए AI API जोड़ना होगा।
+            किसी भी कृषि दवा का प्रयोग विशेषज्ञ की सलाह और
+            उत्पाद के लेबल के अनुसार ही करें।
+        </p>
+    </div>
+
+</section>
+
+<!-- EXTRA TOOLS -->
+<section class="section" id="tools">
+
+    <div class="section-title">
+        <h2>🚜 स्मार्ट खेती टूल्स</h2>
+        <p>खेती के लिए उपयोगी सुविधाएं</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-icon">🌿</div>
+            <h3>रोग नियंत्रण</h3>
+            <p>फसल रोगों के लक्षण और बचाव की जानकारी।</p>
+            <button class="secondary" onclick="showMessage('रोग नियंत्रण')">जानें →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">💰</div>
+            <h3>बाजार भाव</h3>
+            <p>कृषि मंडियों के भाव की जानकारी के लिए सेक्शन।</p>
+            <button class="secondary" onclick="showMessage('बाजार भाव')">देखें →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>किसान ज्ञान</h3>
+            <p>खेती की आधुनिक तकनीक और उपयोगी जानकारियां।</p>
+            <button class="secondary" onclick="showMessage('किसान ज्ञान')">पढ़ें →</button>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <h2>🌱 AgriCure</h2>
+    <p style="margin-top:10px">
+        स्मार्ट खेती • बेहतर फसल • खुशहाल किसान
+    </p>
+    <p style="margin-top:15px">
+        © 2026 AgriCure. All Rights Reserved.
+    </p>
+</footer>
+
+<script>
+
+// SCROLL FUNCTIONS
+
+function goToScanner() {
+    document.getElementById("scanner")
+    .scrollIntoView({behavior:"smooth"});
+}
+
+function goToTools() {
+    document.getElementById("tools")
+    .scrollIntoView({behavior:"smooth"});
+}
+
+// IMAGE PREVIEW
+
+function previewImage(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+        alert("कृपया सही फोटो चुनें।");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const preview = document.getElementById("preview");
+        preview.src = e.target.result;
+        preview.style.display = "block";
+
+        document.getElementById("result").innerHTML =
+        "✅ फोटो सफलतापूर्वक अपलोड हो गई है।";
+    };
+
+    reader.readAsDataURL(file);
+}
+
+// DEMO SCAN
+
+function scanCrop() {
+
+    const file = document.getElementById("imageInput").files[0];
+
+    if (!file) {
+        alert("पहले फसल की फोटो अपलोड करें!");
+        return;
+    }
+
+    document.getElementById("result").innerHTML =
+    "⏳ फोटो तैयार है। वास्तविक AI जांच के लिए सर्वर से कनेक्शन जरूरी है।";
+}
+
+// OTHER BUTTONS
+
+function showMessage(name) {
+    alert(name + " का पेज अभी तैयार किया जाना बाकी है!");
+}
+
+</script>
+
+</body>
+</html>
